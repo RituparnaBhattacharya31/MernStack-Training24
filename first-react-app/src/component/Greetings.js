@@ -8,9 +8,9 @@ const Greetings = ({message, firstName, lastName, address}) => {
     const stylesProp = { color: "red", fontSize: "20px" };
     return (
         <div>
-            <h1 className={`heading ${styles.myClass}`} style={stylesProp}>{message}, {firstName} {lastName}!</h1>
-            <h2>City: {address.city}</h2>
-            {/* <MyComponent fullName={firstName + " " + lastName} /> */}
+            {/* <h1 className={`heading ${styles.myClass}`} style={stylesProp}>{message}, {firstName} {lastName}!</h1>
+            <h2>City: {address.city}</h2> */}
+            <MyComponent fullName={firstName + " " + lastName} />
         </div>
     );
 }

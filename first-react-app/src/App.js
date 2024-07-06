@@ -1,8 +1,13 @@
+import { Component } from 'react';
 import './App.css';
 import Dashboard from './component/HOC/ProtectedDashboard';
 import withAuth from './component/HOC/WithAuth';
 import { Counter } from './component/StateFulFunComp';
 import { ToDoList } from './component/ToDoList';
+import Component1 from './component/Context/Component1';
+import AuthProvider from './component/LoginContext/AuthProvider';
+import LoginComponent from './component/LoginContext/LoginComponent';
+import ProtectedComponent from './component/LoginContext/ProtectedComponent';
 
 // const EnhancedComponent = withGreeting(MyComponent);
 
@@ -19,9 +24,16 @@ const App = () => {
     <div className="App">
       {/* <StateLessComponent /> */}
       {/* <EnhancedComponent name="Chris" /> */}
-      <ProtectedDashboard isLoggedIn={isAuthenticated} />
+      {/* <ProtectedDashboard isLoggedIn={isAuthenticated} /> */}
       {/* <Counter /> */}
       {/* <ToDoList /> */}
+      {/* <Component1 /> */}
+      <AuthProvider>
+        <>
+          <LoginComponent />
+          <ProtectedComponent />
+        </>
+      </AuthProvider>
     </div>
   );
 }
