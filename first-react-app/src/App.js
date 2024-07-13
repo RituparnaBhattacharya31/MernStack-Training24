@@ -16,6 +16,8 @@ import UnControlledForm from './component/Ref/UnControlledForm';
 import ControlledForm from './component/Ref/ControlledForm';
 import CallBackCounter from './component/CallBack/CallBackCounter';
 import ExpensiveCalculation from './component/Memo/ExpensiveCalculation';
+import DisplayData from './component/CustomHook/DisplayData';
+import CounterComp from './component/CustomHook/CounterComp';
 
 // const EnhancedComponent = withGreeting(MyComponent);
 
@@ -53,7 +55,9 @@ const App = () => {
       {/* <UnControlledForm /> */}
       {/* <ControlledForm /> */}
       {/* <CallBackCounter /> */}
-      <ExpensiveCalculation />
+      {/* <ExpensiveCalculation /> */}
+      <DisplayData />
+      {/* <CounterComp /> */}
     </div>
   );
 }
