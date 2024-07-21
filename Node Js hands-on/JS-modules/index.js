@@ -1,8 +1,10 @@
 // 1. fs module
 
+const { currentDateTime } = require("./dateModule");
+
 // fs.readFile()
 
-// const fs = require("fs");
+const fs = require("fs");
 // fs.readFile("../static-files/example.txt", "utf8", (err, data)=>{
 //     if(err) {
 //         console.error("Error reading file:", err );
@@ -18,6 +20,34 @@
 //         return;
 //     }
 //     console.log("File written successfully!")
+// })
+
+// fs.appendFile();
+
+// fs.appendFile("../static-files/example.txt", "\nI get to relax!", (err)=>{
+//     if(err) {
+//         console.error("Error reading file:", err );
+//         return;
+//     }
+//     console.log("File appended successfully!")
+// })
+
+// creating new file
+// fs.appendFile("../static-files/newFile.txt", "Hi, let's learn MERNSTACK!", (err)=>{
+//     if(err) {
+//         console.error("Error reading file:", err );
+//         return;
+//     }
+//     console.log("File created successfully!")
+// })
+
+// fs.open()
+// fs.open("../static-files/example.txt", "w", (err, data) => {
+//     if (err) {
+//         console.error("Error reading file:", err);
+//         return;
+//     }
+//     console.log("File created successfully!");
 // })
 
 // 2. path module
@@ -82,10 +112,11 @@
 
 // 4. http module
 
-// 5 url module 
+// 5 url module
 // const http = require("http");
 // const path = require("path")
 // const url = require("url");
+// const queryString = require("querystring");
 // const server = http.createServer((req, res)=>{
 //     res.statusCode= 200;
 //     res.setHeader("Content-Type", "text/plain");
@@ -121,12 +152,25 @@
 //     else if (req.url === "/about") {
 //         res.statusCode = 200;
 //         res.setHeader("Content-Type", "text/plain");
-//         res.end("This is the about page!");
+//         res.write("Current Date & time : " + currentDateTime())
+//         res.end("\nThis is about page");
 //     }
 //     else if (req.url === "/contactUs") {
 //         res.statusCode = 200;
 //         res.setHeader("Content-Type", "text/plain");
 //         res.end("This is the contact us page!!");
+//     } else if (req.method === "POST" && req.url === "/submit") {
+//         let reqBody = "";
+//         req.on("data", chunk=>{
+//             reqBody = reqBody + chunk.toString();
+//         })
+//         req.on("end", () => {
+//             const parsedBody = queryString.parse(reqBody);
+//             console.log(parsedBody);
+//             res.statusCode = 200;
+//             res.setHeader("Content-Type", "text/plain");
+//             res.end(`Received data :  ${JSON.stringify(reqBody)}`);
+//         })
 //     }
 //     else {
 //         res.statusCode = 404;
