@@ -1,15 +1,16 @@
 const express = require("express");
-const connection = require("../database/mysqlConn");
+const todoRoutes = require("../database/todoRoutes");
+const userRouter = require("../database/userRoutes");
+const { validateTodo } = require("../middleware/validateTodo");
 const router = express.Router();
 
-router.get("/todos", (req, res)=>{
-    let fetchTodos = "SELECT * FROM todos";
-    connection.query(fetchTodos, (err, response) => {
-        if(err) {
-            return res.status(500).json({error: err.message})
-        }
-        res.json(response);
-    })
-})
+// todos specific routes 
+router.get("/todos", todoRoutes.getTodos);
+router.post("/todos", validateTodo ,todoRoutes.addTodo);
+router.put("/todos/:id", todoRoutes.updateTodo);
+router.delete("/todos/:id", todoRoutes.deleteTodo )
+
+// user specific routes
+router.get("/users", userRouter.getUsers);
 
 module.exports = router;
