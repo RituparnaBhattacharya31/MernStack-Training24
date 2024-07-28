@@ -1,10 +1,12 @@
 const connection = require("../database/mysqlConn");
 
-const getTodos = (req, res) => {
-    let fetchTodos = "SELECT * FROM todos where status=1";
+const getTodos = (req, res, next) => {
+    let fetchTodos = "SELECT * FROM todo where status=1";
     connection.query(fetchTodos, (err, response) => {
+        console.log("within get todos")
         if (err) {
-            return res.status(500).json({ error: err.message });
+            // return res.status(500).json({ error: err.message });
+            next(err); // to send it to errorhandler
         }
         res.json(response);
     })

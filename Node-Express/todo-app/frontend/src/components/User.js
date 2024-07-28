@@ -10,7 +10,11 @@ function User() {
     }, [])
 
     const fetchUserList = () => {
-        axios.get(`${backend_endpoint}/users`).then((response) => {
+        axios.get(`${backend_endpoint}/users`, {
+            headers: {
+                Authorization: localStorage.getItem("accessToken")
+            }
+        }).then((response) => {
             setUserList(response.data)
         }).catch((err) => {
             console.log(err)
